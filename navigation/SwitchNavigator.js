@@ -4,17 +4,17 @@ import AuthNavigator from './AuthNavigator.js'
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
 const SwitchNavigator = createSwitchNavigator(
-  {
-    Home: { 
-      screen: TabNavigator
+    {
+        Home: {
+            screen: TabNavigator
+        },
+        Auth: {
+            screen: AuthNavigator
+        }
     },
-    Auth: { 
-      screen: AuthNavigator
+    {
+        initialRouteName: 'Auth',
     }
-  },
-  {
-    initialRouteName: 'Auth',
-  }
 );
 
 export default createAppContainer(SwitchNavigator);

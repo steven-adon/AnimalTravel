@@ -1,0 +1,6 @@
+{
+    "editor.defaultFormatter": "vscode.configuration-editing",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}

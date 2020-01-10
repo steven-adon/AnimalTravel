@@ -6,26 +6,26 @@ import { add, subtract } from '../actions'
 import styles from '../styles.js'
 
 class Home extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text> Home {this.props.counter}</Text>
-        <Text>How many apps are we going to build s? {this.props.counter}</Text>
-        <Button title='Add' onPress={() => this.props.add()}/>
-        <Button title='Subtract' onPress={() => this.props.subtract()}/>
-      </View>
-    );
-  }
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text> Home {this.props.counter}</Text>
+				<Text>How many apps are we going to build s? {this.props.counter}</Text>
+				<Button title='Add' onPress={() => this.props.add()} />
+				<Button title='Subtract' onPress={() => this.props.subtract()} />
+			</View>
+		);
+	}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ add, subtract }, dispatch)
+	return bindActionCreators({ add, subtract }, dispatch)
 }
 
 const mapStateToProps = (state) => {
-  return {
-    counter: state
-  }
+	return {
+		counter: state
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

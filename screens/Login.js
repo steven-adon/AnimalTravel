@@ -2,27 +2,25 @@ import React from 'react';
 import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword } from '../actions/user.js'
+import { updateEmail, updatePassword, login } from '../actions/user.js'
+import firebase from 'firebase'
 import styles from '../styles.js'
 
 class Login extends React.Component {
 
   login = () => {
-		if(this.props.user.email){
-			this.props.navigation.navigate('Home')
-		}
-
-    // firebase.auth().createUserWithEmailAndPassword(this.props.user.email, this.props.user.password).catch(function(error) {
-    //   alert(error)
-    // });
+		firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.props.navigation.navigate('Home')
+      }
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text> Login </Text>
         <TextInput
-          style={styles.border}
+        	style={styles.border}
         	value={this.props.user.email}
         	onChangeText={input => this.props.updateEmail(input)}
         	placeholder='Email'
@@ -50,7 +48,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ updateEmail, updatePassword }, dispatch)
+  return bindActionCreators({ updateEmail, updatePassword, login }, dispatch)
 }
 
 const mapStateToProps = (state) => {

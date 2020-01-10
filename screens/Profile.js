@@ -4,19 +4,19 @@ import { connect } from 'react-redux'
 import styles from '../styles.js'
 
 class Profile extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text> Profile {this.props.counter}</Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text> Profile {this.props.counter}</Text>
+            </View>
+        );
+    }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    counter: state
-  }
+    return {
+        counter: state
+    }
 }
 
 export default connect(mapStateToProps)(Profile)
