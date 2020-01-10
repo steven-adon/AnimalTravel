@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Home from '../screens/Home.js'
 import Search from '../screens/Search.js'
-import Upload from '../screens/Upload.js'
+import Post from '../screens/Post'
 import Activity from '../screens/Activity.js'
 import Profile from '../screens/Profile.js'
 import { createAppContainer } from 'react-navigation';
@@ -29,8 +29,8 @@ const TabNavigator = createBottomTabNavigator(
                 )
             }
         },
-        Upload: {
-            screen: Upload,
+        Post: {
+            screen: Post,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: () => (

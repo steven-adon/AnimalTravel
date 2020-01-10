@@ -28,9 +28,19 @@ const user = (state = {}, action) => {
     }
 }
 
+const post = (state = {}, action) => {
+    switch (action.type) {
+      case 'UPDATE_DESCRIPTION':
+        return {...state, description: action.payload}
+      default:
+        return state
+    }
+  }
+
 const rootReducer = combineReducers({
     counter,
-    user
+    user,
+    post
 })
 
 export default rootReducer
