@@ -13,9 +13,7 @@ const counter = (state = 115, action) => {
 
 const user = (state = {}, action) => {
     switch (action.type) {
-        case 'Login':
-            return action.payload
-        case 'SIGNUP':
+        case 'LOGIN':
             return action.payload
         case 'UPDATE_EMAIL':
             return { ...state, email: action.payload }
