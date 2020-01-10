@@ -2,30 +2,32 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import firebase from 'firebase';
 import { add, subtract } from '../actions'
-import styles from '../styles.js'
+import styles from '../styles'
 
 class Home extends React.Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<Text> Home {this.props.counter}</Text>
-				<Text>How many apps are we going to build s? {this.props.counter}</Text>
-				<Button title='Add' onPress={() => this.props.add()} />
-				<Button title='Subtract' onPress={() => this.props.subtract()} />
-			</View>
-		);
-	}
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Home</Text>
+        <Text>How many apps are we going to build? {this.props.counter}</Text>
+        <Button title='Add' onPress={() => this.props.add()}/>
+        <Button title='Subtract' onPress={() => this.props.subtract()}/>
+        <Button title='Logout' onPress={() => firebase.auth().signOut()}/>
+      </View>
+    );
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ add, subtract }, dispatch)
+  return bindActionCreators({ add, subtract }, dispatch)
 }
 
 const mapStateToProps = (state) => {
-	return {
-		counter: state
-	}
+  return {
+    counter: state.counter
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
