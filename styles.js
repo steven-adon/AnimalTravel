@@ -37,7 +37,7 @@ export default styles = StyleSheet.create({
         textAlign: 'center'
     },
     postPhoto: {
-        height: 100,
-        width: 100,
+        height: 250,
+        width: width,
     }
 });
