@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Button, Image, ScrollView, FlatList } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { add, subtract } from '../actions'
@@ -13,16 +13,24 @@ class Home extends React.Component {
     }
 
     render() {
-        if(this.props.post === null) return null
+        if (this.props.post === null) return null
         return (
             <View style={styles.container}>
-                <Text>Home</Text>
+                {/* <Text>Home</Text>
                 <Text>How many apps are we going to build? {this.props.counter}</Text>
                 <Button title='Add' onPress={() => this.props.add()} />
-                <Button title='Subtract' onPress={() => this.props.subtract()} />
+                <Button title='Subtract' onPress={() => this.props.subtract()} /> */}
 
-                <Image style={styles.postPhoto} source={{uri: this.props.post.feed[0].postPhoto}}/>
-                <Text>{this.props.post.feed[0].postDescription}</Text>
+                <FlatList
+                    data={this.props.post.feed}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <View>
+                            <Image style={styles.postPhoto} source={{ uri: item.postPhoto }} />
+                            <Text>{item.postDescription}</Text>
+                        </View>
+                    )}
+                />
 
             </View>
         );
