@@ -29,7 +29,7 @@ class Home extends React.Component {
                         <View>
                             <View style={[styles.row, styles.center]}>
                                 <View style={[styles.row, styles.center]}>
-                                    <Image style={styles.roundImage} source={{ uri: item.photo }} />
+                                    <Image style={styles.roundImage} source={ item.photo ? { uri: item.photo } : require('../assets/images/robot-dev.png')} />
                                     <Text>{item.username}</Text>
                                 </View>
                                 <Ionicons style={{ margin: 5 }} name='ios-flag' size={25} />
