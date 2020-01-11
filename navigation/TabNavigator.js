@@ -1,18 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Home from '../screens/Home.js'
-import Search from '../screens/Search.js'
-import Post from '../screens/Post'
-import Activity from '../screens/Activity.js'
-import Profile from '../screens/Profile.js'
+import { HomeNavigator, SearchNavigator, PostNavigator, ActivityNavigator, ProfileNavigator } from './StackNavigator'
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 const TabNavigator = createBottomTabNavigator(
     {
         Home: {
-            screen: Home,
+            screen: HomeNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: () => (
@@ -21,7 +17,7 @@ const TabNavigator = createBottomTabNavigator(
             }
         },
         Search: {
-            screen: Search,
+            screen: SearchNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: () => (
@@ -30,7 +26,7 @@ const TabNavigator = createBottomTabNavigator(
             }
         },
         Post: {
-            screen: Post,
+            screen: PostNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: () => (
@@ -39,7 +35,7 @@ const TabNavigator = createBottomTabNavigator(
             }
         },
         Activity: {
-            screen: Activity,
+            screen: ActivityNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: ({ focused }) => (
@@ -48,7 +44,7 @@ const TabNavigator = createBottomTabNavigator(
             }
         },
         Profile: {
-            screen: Profile,
+            screen: ProfileNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: () => (
