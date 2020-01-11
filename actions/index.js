@@ -2,6 +2,7 @@ import uuid from 'uuid';
 import firebase from 'firebase'
 
 export const uploadPhoto = (image) => {
+	debugger
 	return async (dispatch) => {
 		try {
 			const blob = await new Promise((resolve, reject) => {
@@ -19,7 +20,6 @@ export const uploadPhoto = (image) => {
 		}
 	}
 }
-
 
 export const add = () => {
 	return { type: 'ADD' }

@@ -19,8 +19,8 @@ class CameraUpload extends React.Component {
                 const resize = await ImageManipulator.manipulateAsync(image.uri,
                     [{ rotate: 90 }, { flip: ImageManipulator.FlipType.Vertical }],
                     { compress: 0.1, format: ImageManipulator.SaveFormat.PNG })
-                // const url = await this.props.dispatch(uploadPhoto(resize))
-                console.log(resize, '❤️')
+                const url = await this.props.dispatch(uploadPhoto(resize))
+                console.log(url)
             }
         }
     }
@@ -47,4 +47,4 @@ const mapStateToProps = (state) => {
     return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CameraUpload)
+export default connect(mapStateToProps)(CameraUpload)
