@@ -14,7 +14,6 @@ class CameraUpload extends React.Component {
         const permission = await Camera.requestPermissionsAsync()
         if (permission.status === 'granted') {
             const image = await this.camera.takePictureAsync()
-            console.log(image)
             if (!image.cancelled) {
                 const resize = await ImageManipulator.manipulateAsync(image.uri,
                     [{ rotate: 90 }, { flip: ImageManipulator.FlipType.Vertical }],
