@@ -16,7 +16,7 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
         Home: {
             screen: HomeScreen,
             navigationOptions: ({ navigation }) => ({
-                headerTitle: <Image style={{ width: 120, height: 35 }} source={require('../assets/logo.jpg')} />,
+                headerTitle: <Image style={{ width: 170, height: 35 }} source={require('../assets/Yohoo.jpg')} />,
                 headerLeft: (
                     <TouchableOpacity onPress={() => navigation.navigate('Camera')} >
                         <Ionicons style={{ marginLeft: 10 }} name={'ios-camera'} size={30} />

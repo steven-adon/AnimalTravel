@@ -19,6 +19,8 @@ class CameraUpload extends React.Component {
                     [{ rotate: 90 }, { flip: ImageManipulator.FlipType.Vertical }],
                     { compress: 0.1, format: ImageManipulator.SaveFormat.PNG })
                 const url = await this.props.dispatch(uploadPhoto(resize))
+                this.props.dispatch(updatePhoto(url))
+                url ? this.props.navigation.navigate('Post') : null
                 console.log(url)
             }
         }
