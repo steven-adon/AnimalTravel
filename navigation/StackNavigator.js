@@ -8,6 +8,7 @@ import ActivityScreen from '../screens/Activity'
 import ProfileScreen from '../screens/Profile'
 import CameraScreen from '../screens/Camera'
 import MapScreen from '../screens/Map'
+import EditScreen from '../screens/Signup'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack'
 import { TouchableOpacity, Image } from 'react-native'
@@ -55,6 +56,9 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
     if (navigation.state.routes.some(route => route.routeName === 'Camera')) {
         tabBarVisible = false
     }
+    if (navigation.state.routes.some(route => route.routeName === 'Map')) {
+        tabBarVisible = false
+    }
     return {
         tabBarVisible,
     }
@@ -100,6 +104,17 @@ export const ProfileNavigator = createAppContainer(createStackNavigator(
             navigationOptions: {
                 title: 'Profile'
             }
+        },
+        Edit: {
+            screen: EditScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Edit Profile',
+                headerLeft: (
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                    </TouchableOpacity>
+                )
+            })
         }
     }
 ));

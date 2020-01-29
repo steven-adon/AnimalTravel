@@ -51,7 +51,8 @@ export default styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        margin: 5
+        margin: 5,
+        backgroundColor: '#adadad'
     },
     cameraButton: {
         height: 100,
@@ -61,4 +62,23 @@ export default styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginBottom: 50
     },
+    button: {
+        marginTop: 20,
+        paddingVertical: 10,
+        alignItems: 'center',
+        borderColor: '#d3d3d3',
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 200
+      },
+      buttonSmall: {
+        margin: 10,
+        marginBottom: 0,
+        padding: 5,
+        alignItems: 'center',
+        borderColor: '#d3d3d3',
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 125
+      }
 });
