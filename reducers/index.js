@@ -29,6 +29,7 @@ const user = (state = {}, action) => {
 }
 
 const post = (state = null, action) => {
+    console.log(action.payload, '❤️❤️')
     switch (action.type) {
         case 'UPDATE_PHOTO':
             return { ...state, photo: action.payload }
@@ -58,7 +59,7 @@ const rootReducer = combineReducers({
     counter,
     user,
     post,
-    model,
+    modal,
 })
 
 export default rootReducer

@@ -8,7 +8,8 @@ export default firebaseConfig = {
 	messagingSenderId: "887561813631",
 	appId: "1:887561813631:web:6fec92dad7cb002a13894a",
 	measurementId: "G-PL50FH85G7",
-	googleApiKey: ''
+	googleApiKey: 'AIzaSyDSDSz4aWZPjLtbo2CCtLn0KpXGYs29zTo'
 };
 
+const demoPhoto = 'https://firebasestorage.googleapis.com/v0/b/instagram-tutorial-3c0fc.appspot.com/o/paris.jpg?alt=media&token=dc7c8705-cd1c-4a22-9b15-4c854941785f';
 

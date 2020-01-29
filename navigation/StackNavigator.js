@@ -7,6 +7,7 @@ import PostScreen from '../screens/Post'
 import ActivityScreen from '../screens/Activity'
 import ProfileScreen from '../screens/Profile'
 import CameraScreen from '../screens/Camera'
+import MapScreen from '../screens/Map'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack'
 import { TouchableOpacity, Image } from 'react-native'
@@ -27,6 +28,17 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                         <Ionicons style={{ marginRight: 10 }} name={'ios-send'} size={30} />
                     </TouchableOpacity>
                 ),
+            })
+        },
+        Map: {
+            screen: MapScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Map View',
+                headerLeft: (
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                    </TouchableOpacity>
+                )
             })
         },
         Camera: {

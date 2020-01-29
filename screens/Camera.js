@@ -7,6 +7,7 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { uploadPhoto } from '../actions/index';
+import { updatePhoto } from '../actions/post';
 
 class CameraUpload extends React.Component {
 
@@ -41,7 +42,7 @@ class CameraUpload extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ uploadPhoto }, dispatch)
+    return bindActionCreators({ uploadPhoto, updatePhoto }, dispatch)
 }
 
 const mapStateToProps = (state) => {

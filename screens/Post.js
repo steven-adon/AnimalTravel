@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import ENV from '../env';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import { updateDescription, uploadPost } from '../actions/post'
-import { Modal, SafeAreaView, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { updateDescription, uploadPost, updateLocation} from '../actions/post'
+import { Modal, SafeAreaView, Text, View, TextInput, Image, TouchableOpacity, FlatList } from 'react-native';
 import styles from '../styles';
 const GOOGLE_API = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
 
