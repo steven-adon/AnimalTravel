@@ -28,5 +28,3 @@ export const add = () => {
 export const subtract = () => {
 	return { type: 'SUBTRACT' }
 }
-
-

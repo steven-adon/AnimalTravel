@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import db from '../config/firebase';
+import * as Facebook from 'expo-facebook';
 
 export const updateEmail = (email) => {
 	return {type: 'UPDATE_EMAIL', payload: email}
@@ -32,26 +33,38 @@ export const login = () => {
 export const facebookLogin = () => {
 	return async (dispatch) => {
 		try {
-			const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('136245687322203')
+			// const { type, token } = await Facebook.logInWithReadPermissionsAsync('1012406185793074')
+			await Facebook.initializeAsync('1012406185793074');
+			const {
+				type,
+				token,
+			  } = await Facebook.logInWithReadPermissionsAsync({
+				permissions: ['public_profile'],
+			  });
+
 			if(type === 'success') {
 				// Build Firebase credential with the Facebook access token.
 				const credential = await firebase.auth.FacebookAuthProvider.credential(token);
 				// Sign in with credential from the Facebook user.
 				const response = await firebase.auth().signInWithCredential(credential)
-				const user = await db.collection('users').doc(response.uid).get()
+
+				const user = await db.collection('users').doc(response.user.uid).get()
+
 				if(!user.exists){
-					const user = {
-						uid: response.uid,
-						email: response.email,
-						username: response.displayName,
+
+					const currentUser = {
+						uid: response.user.uid,
+						email: response.user.email,
+						username: response.user.displayName,
 						bio: '',
-						photo: response.photoURL,
+						photo: response.user.photoURL,
 						token: null,
 					}
-					db.collection('users').doc(response.uid).set(user)
-					dispatch({type: 'LOGIN', payload: user})
+
+					db.collection('users').doc(response.user.uid).set(currentUser)
+					dispatch({type: 'LOGIN', payload: currentUser})
 				} else {
-					dispatch(getUser(response.uid))
+					dispatch(getUser(response.user.uid))
 				}
 			}
 		} catch (e) {
@@ -59,7 +72,6 @@ export const facebookLogin = () => {
 		}
 	}
 }
-
 
 export const getUser = (uid) => {
 	return async (dispatch, getState) => {
