@@ -7,5 +7,8 @@ export default firebaseConfig = {
 	storageBucket: "instagram-tutorial-3c0fc.appspot.com",
 	messagingSenderId: "887561813631",
 	appId: "1:887561813631:web:6fec92dad7cb002a13894a",
-	measurementId: "G-PL50FH85G7"
+	measurementId: "G-PL50FH85G7",
+	googleApiKey: ''
 };
+
+
