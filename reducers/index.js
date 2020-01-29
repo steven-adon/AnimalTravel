@@ -31,7 +31,6 @@ const user = (state = {}, action) => {
 }
 
 const post = (state = null, action) => {
-    console.log(action.payload, '❤️❤️')
     switch (action.type) {
         case 'UPDATE_PHOTO':
             return { ...state, photo: action.payload }

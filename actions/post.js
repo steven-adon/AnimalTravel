@@ -19,26 +19,19 @@ export const uploadPost = () => {
 		try {
 			const { post, user } = getState()
 			const id = uuid.v4()
-
-			console.log(post);
-
 			const upload = {
 				id: id,
 				postPhoto: post.photo,
-				postDescription: post.description,
-				postLocation: post.location,
+				postDescription: post.description || ' ',
+				postLocation: post.location || ' ',
 				uid: user.uid,
-				photo: user.photo,
+				photo: user.photo || ' ',
 				username: user.username,
+				likes: []
 			}
-
-			// const ref = await db.collection('posts').doc()
-			// upload.id = ref.id
-			// ref.set(upload)
-
 			db.collection('posts').doc(id).set(upload)
 		} catch (e) {
-			alert(e)
+			console.error(e)
 		}
 	}
 }

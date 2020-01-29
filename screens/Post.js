@@ -4,9 +4,12 @@ import { connect } from 'react-redux'
 import ENV from '../env';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import { updateDescription, uploadPost, updateLocation} from '../actions/post'
+import * as ImagePicker from 'expo-image-picker';
+import { NavigationEvents } from 'react-navigation';
+import { updateDescription, uploadPost, updateLocation, updatePhoto } from '../actions/post'
 import { Modal, SafeAreaView, Text, View, TextInput, Image, TouchableOpacity, FlatList } from 'react-native';
 import styles from '../styles';
+import { uploadPhoto } from '../actions'
 const GOOGLE_API = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
 
 
@@ -19,6 +22,24 @@ class Post extends React.Component {
     post = () => {
         this.props.uploadPost()
         this.props.navigation.navigate('Home')
+    }
+
+
+    onWillFocus = () => {
+        if (!this.props.post.photo) {
+            this.openLibrary()
+        }
+    }
+
+    openLibrary = async () => {
+        const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+        if (status === 'granted') {
+            const image = await ImagePicker.launchImageLibraryAsync()
+            if (!image.cancelled) {
+                const url = await this.props.uploadPhoto(image)
+                this.props.updatePhoto(url)
+            }
+        }
     }
 
     setLocation = (location) => {
@@ -51,6 +72,7 @@ class Post extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <NavigationEvents onWillFocus={this.onWillFocus}/>
                 <Modal animationType='slide' transparent={false} visible={this.state.showModal}>
                     <SafeAreaView style={[styles.container, styles.center]}>
                         <FlatList
@@ -71,6 +93,12 @@ class Post extends React.Component {
                     onChangeText={text => this.props.updateDescription(text)}
                     placeholder='Description'
                 />
+                {/* {
+                    this.state.locations.length > 0 ?
+                    <TouchableOpacity style={styles.border} onPress={() => this.setState({ showModal: true })}>
+                        <Text style={styles.gray}>{this.props.post.location ? this.props.post.location.name : 'Add a Location'}</Text>
+                    </TouchableOpacity> : null
+                } */}
                 <TouchableOpacity style={styles.border} onPress={this.getLocations}>
                     <Text style={styles.gray}>{this.props.post.location ? this.props.post.location.name : 'Add a Location'}</Text>
                 </TouchableOpacity>
@@ -83,7 +111,7 @@ class Post extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ updateDescription, uploadPost, updateLocation }, dispatch)
+    return bindActionCreators({ updateDescription, uploadPost, updateLocation, uploadPhoto, updatePhoto}, dispatch)
 }
 
 const mapStateToProps = (state) => {
