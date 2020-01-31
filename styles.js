@@ -8,12 +8,35 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    containerComment: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
     center: {
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    space: {
+        justifyContent: 'space-between',
+    },
+    left: {
+        alignItems: 'flex-start',
+    },
+    right: {
+        alignItems: 'flex-end',
+    },
     row: {
         flexDirection: 'row'
+    },
+    input: {
+        width: width * .90,
+        margin: 15,
+        padding: 15,
+        alignSelf: 'center',
+        borderColor: '#d3d3d3',
+        borderWidth: 1,
+        borderRadius: 50,
+        fontSize: 16,
     },
     button: {
         marginTop: 20,
@@ -70,8 +93,8 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         width: 200
-      },
-      buttonSmall: {
+    },
+    buttonSmall: {
         margin: 10,
         marginBottom: 0,
         padding: 5,
@@ -80,5 +103,5 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         width: 125
-      }
+    }
 });

@@ -9,6 +9,7 @@ import ProfileScreen from '../screens/Profile'
 import CameraScreen from '../screens/Camera'
 import MapScreen from '../screens/Map'
 import EditScreen from '../screens/Signup'
+import CommentScreen from '../screens/Comment'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack'
 import { TouchableOpacity, Image } from 'react-native'
@@ -29,6 +30,17 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                         <Ionicons style={{ marginRight: 10 }} name={'ios-send'} size={30} />
                     </TouchableOpacity>
                 ),
+            })
+        },
+        Comment: {
+            screen: CommentScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Comments',
+                headerLeft: (
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                    </TouchableOpacity>
+                )
             })
         },
         Map: {
@@ -57,6 +69,9 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
         tabBarVisible = false
     }
     if (navigation.state.routes.some(route => route.routeName === 'Map')) {
+        tabBarVisible = false
+    }
+    if (navigation.state.routes.some(route => route.routeName === 'Comment')) {
         tabBarVisible = false
     }
     return {
@@ -118,3 +133,4 @@ export const ProfileNavigator = createAppContainer(createStackNavigator(
         }
     }
 ));
+

@@ -64,7 +64,9 @@ class Home extends React.Component {
 
                                 <View style={styles.row}>
                                     <Ionicons style={{ margin: 5 }} color={liked ? '#db565b' : '#000'} name={liked ? 'ios-heart' : 'ios-heart-empty'} size={25} />
-                                    <Ionicons style={{ margin: 5 }} name='ios-chatbubbles' size={25} />
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Comment', item)} >
+                                        <Ionicons style={{margin: 5}} name='ios-chatbubbles' size={25} />
+                                    </TouchableOpacity>
                                     <Ionicons style={{ margin: 5 }} name='ios-send' size={25} />
                                 </View>
                                 <Text>{item.postDescription}</Text>
