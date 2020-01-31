@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import { HomeNavigator, SearchNavigator, PostNavigator, ActivityNavigator, ProfileNavigator } from './StackNavigator'
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
@@ -11,8 +11,9 @@ const TabNavigator = createBottomTabNavigator(
             screen: HomeNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <Ionicons name='ios-home' size={32} />
+                tabBarIcon: ({focused}) => (
+                    // <Ionicons name='ios-home' size={32} />
+                    <MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} size={32} />
                 )
             }
         },
@@ -47,8 +48,9 @@ const TabNavigator = createBottomTabNavigator(
             screen: ProfileNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <Ionicons name='ios-person' size={32} />
+                tabBarIcon: ({focused}) => (
+                    // <Ionicons name='ios-person' size={32} />
+                    <FontAwesome name={focused ? 'user' : 'user-o'} size={32} />
                 )
             }
         }

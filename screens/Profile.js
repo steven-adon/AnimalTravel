@@ -8,11 +8,8 @@ class Profile extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> Profile</Text>
-                <Image
-                    style={styles.roundImage}
-                    source={this.props.user.photo ? { uri: this.props.user.photo } : require('../assets/images/robot-dev.png')}
-                />
+                <Text>Profile</Text>
+                <Image style={styles.roundImage} source={this.props.user.photo ? { uri: this.props.user.photo } : require('../assets/images/robot-dev.png')} />
                 <Text>{this.props.user.email}</Text>
                 <Text>{this.props.user.username}</Text>
                 <Text>{this.props.user.bio}</Text>

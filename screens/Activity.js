@@ -29,25 +29,25 @@ class Activity extends React.Component {
             case 'LIKE':
                 return (
                     <View style={[styles.row, styles.space]}>
-                        <Image style={styles.roundImage} source={{ uri: item.likerPhoto }} />
+                        <Image style={styles.roundImage} source={ item.likerPhoto ? { uri: item.likerPhoto } : require('../assets/images/robot-dev.png')} />
                         <View style={[styles.container, styles.left]}>
                             <Text style={styles.bold}>{item.likerName}</Text>
                             <Text style={styles.gray}>Liked Your Photo</Text>
                             <Text style={[styles.gray, styles.small]}>{moment(item.date).format('ll')}</Text>
                         </View>
-                        <Image style={styles.roundImage} source={{ uri: item.postPhoto }} />
+                        <Image style={styles.roundImage} source={item.postPhoto ? { uri: item.postPhoto } : require('../assets/images/robot-dev.png')} />
                     </View>
                 )
             case 'COMMENT':
                 return (
                     <View style={[styles.row, styles.space]}>
-                        <Image style={styles.roundImage} source={{ uri: item.commenterPhoto }} />
+                        <Image style={styles.roundImage} source={item.commenterPhoto ? { uri: item.commenterPhoto } : require('../assets/images/robot-dev.png')} />
                         <View style={[styles.container, styles.left]}>
                             <Text style={styles.bold}>{item.commenterName}</Text>
                             <Text style={styles.gray}>{item.comment}</Text>
                             <Text style={[styles.gray, styles.small]}>{moment(item.date).format('ll')}</Text>
                         </View>
-                        <Image style={styles.roundImage} source={{ uri: item.postPhoto }} />
+                        <Image style={styles.roundImage} source={item.postPhoto ? { uri: item.postPhoto } : require('../assets/images/robot-dev.png')} />
                     </View>
                 )
             default: null
