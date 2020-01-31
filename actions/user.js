@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import db from '../config/firebase';
 import * as Facebook from 'expo-facebook';
+import orderBy from 'lodash/orderBy'
 
 export const updateEmail = (email) => {
 	return { type: 'UPDATE_EMAIL', payload: email }
@@ -19,7 +20,7 @@ export const updateBio = (bio) => {
 }
 
 export const updatePhoto = (photo) => {
-	return {type: 'UPDATE_PHOTO', payload: photo}
+	return { type: 'UPDATE_PHOTO', payload: photo }
 }
 
 export const login = () => {
@@ -68,7 +69,7 @@ export const facebookLogin = () => {
 					db.collection('users').doc(response.user.uid).set(currentUser)
 					dispatch({ type: 'LOGIN', payload: currentUser })
 				} else {
-					dispatch(getUser(response.user.uid))
+					dispatch(getUser(response.user.uid, 'LOGIN'))
 				}
 			}
 		} catch (e) {
@@ -77,11 +78,24 @@ export const facebookLogin = () => {
 	}
 }
 
-export const getUser = (uid) => {
+export const getUser = (uid, type) => {
 	return async (dispatch, getState) => {
 		try {
-			const user = await db.collection('users').doc(uid).get()
-			dispatch({ type: 'LOGIN', payload: user.data() })
+			const userQuery = await db.collection('users').doc(uid).get()
+			let user = userQuery.data()
+
+			let posts = []
+			const postsQuery = await db.collection('posts').where('uid', '==', uid).get()
+			postsQuery.forEach(function (response) {
+				posts.push(response.data())
+			})
+			user.posts = orderBy(posts, 'date', 'desc')
+
+			if (type === 'LOGIN') {
+				dispatch({ type: 'LOGIN', payload: user })
+			} else {
+				dispatch({ type: 'GET_PROFILE', payload: user })
+			}
 		} catch (e) {
 			alert(e)
 		}

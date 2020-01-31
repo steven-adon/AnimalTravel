@@ -44,7 +44,7 @@ const TabNavigator = createBottomTabNavigator(
                 )
             }
         },
-        Profile: {
+        MyProfile: {
             screen: ProfileNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
