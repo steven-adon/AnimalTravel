@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Text, View, TextInput, FlatList, Image, KeyboardAvoidingView } from 'react-native';
+import { Text, View, TextInput, FlatList, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { addComment, getComments } from '../actions/post';
 
 class Comment extends React.Component {
@@ -24,25 +24,29 @@ class Comment extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView enabled behavior='padding' style={styles.containerComment}>
-                <FlatList
-                    keyExtractor={(item) => JSON.stringify(item.date)}
-                    data={this.props.post.comments}
-                    renderItem={({ item }) => (
-                        <View style={[styles.row, styles.space]}>
-                            <Image style={styles.roundImage} source={{ uri: item.commenterPhoto }} />
-                            <View style={[styles.container, styles.left]}>
-                                <Text>{item.commenterName}</Text>
-                                <Text>{item.comment}</Text>
-                            </View>
-                        </View>
-                    )} />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(comment) => this.setState({ comment })}
-                    value={this.state.comment}
-                    returnKeyType='send'
-                    placeholder='Add Comment'
-                    onSubmitEditing={this.postComment} />
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <>
+                        <FlatList
+                            keyExtractor={(item) => JSON.stringify(item.date)}
+                            data={this.props.post.comments}
+                            renderItem={({ item }) => (
+                                <View style={[styles.row, styles.space]}>
+                                    <Image style={styles.roundImage} source={{ uri: item.commenterPhoto }} />
+                                    <View style={[styles.container, styles.left]}>
+                                        <Text>{item.commenterName}</Text>
+                                        <Text>{item.comment}</Text>
+                                    </View>
+                                </View>
+                            )} />
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={(comment) => this.setState({ comment })}
+                            value={this.state.comment}
+                            returnKeyType='send'
+                            placeholder='Add Comment'
+                            onSubmitEditing={this.postComment} />
+                    </>
+                </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         );
     }

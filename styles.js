@@ -4,32 +4,39 @@ const { width } = Dimensions.get('window');
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#fff'
+      },
+      center: {
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    containerComment: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    center: {
+      },
+      space: {
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    space: {
-        justifyContent: 'space-between',
-    },
-    left: {
+      },
+      left: {
         alignItems: 'flex-start',
-    },
-    right: {
+      },
+      right: {
         alignItems: 'flex-end',
-    },
-    row: {
+      },
+      row: {
         flexDirection: 'row'
-    },
-    input: {
-        width: width * .90,
+      },
+      bold: {
+        fontWeight: 'bold',
+      },
+      white: {
+        color: '#fff',
+      },
+      gray: {
+        color: '#adadad',
+      },
+      small: {
+        fontSize: 10,
+      },
+      input: {
+        width: width*.90,
         margin: 15,
         padding: 15,
         alignSelf: 'center',
@@ -37,17 +44,8 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 50,
         fontSize: 16,
-    },
-    button: {
-        marginTop: 20,
-        paddingVertical: 10,
-        alignItems: 'center',
-        borderColor: '#d3d3d3',
-        borderWidth: 1,
-        borderRadius: 5,
-        width: 200
-    },
-    facebookButton: {
+      },
+      facebookButton: {
         backgroundColor: '#3b5998',
         marginTop: 20,
         paddingVertical: 10,
@@ -56,8 +54,8 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         width: 200
-    },
-    border: {
+      },
+      border: {
         width: '85%',
         margin: 10,
         padding: 15,
@@ -65,27 +63,27 @@ export default styles = StyleSheet.create({
         borderColor: '#d3d3d3',
         borderBottomWidth: 1,
         textAlign: 'center'
-    },
-    postPhoto: {
+      },
+      postPhoto: {
         height: 250,
         width: width,
-    },
-    roundImage: {
+      },
+      roundImage: {
         width: 40,
         height: 40,
         borderRadius: 20,
-        margin: 5,
+        margin: 10,
         backgroundColor: '#adadad'
-    },
-    cameraButton: {
+      },
+      cameraButton: {
         height: 100,
         width: 100,
         borderRadius: 50,
         alignSelf: 'center',
         backgroundColor: '#fff',
         marginBottom: 50
-    },
-    button: {
+      },
+      button: {
         marginTop: 20,
         paddingVertical: 10,
         alignItems: 'center',
@@ -93,8 +91,8 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         width: 200
-    },
-    buttonSmall: {
+      },
+      buttonSmall: {
         margin: 10,
         marginBottom: 0,
         padding: 5,
@@ -103,5 +101,5 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         width: 125
-    }
+      },
 });
