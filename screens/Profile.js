@@ -23,10 +23,10 @@ class Profile extends React.Component {
     } else {
       user = this.props.user
     }
-    // if (!user.posts) return <ActivityIndicator style={styles.container} />
+    if (!user.posts) return <ActivityIndicator style={styles.container} />
     return (
       <View style={styles.container}>
-        {/* <View style={[styles.row, styles.space, { paddingHorizontal: 20 }]}>
+        <View style={[styles.row, styles.space, { paddingHorizontal: 20 }]}>
           <View style={styles.center}>
             <Image style={styles.roundImage} source={{ uri: user.photo }} />
             <Text>{user.username}</Text>
@@ -72,7 +72,7 @@ class Profile extends React.Component {
           numColumns={3}
           data={user.posts}
           keyExtractor={(item) => JSON.stringify(item.date)}
-          renderItem={({ item }) => <Image style={styles.squareLarge} source={{ uri: item.postPhoto }} />} /> */}
+          renderItem={({ item }) => <Image style={styles.squareLarge} source={{ uri: item.postPhoto }} />} />
       </View>
     );
   }
