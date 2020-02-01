@@ -30,7 +30,8 @@ export const uploadPost = () => {
 				uid: user.uid,
 				photo: user.photo || ' ',
 				username: user.username,
-				likes: []
+				likes: [],
+				date: new Date().getTime()
 			}
 			db.collection('posts').doc(id).set(upload)
 		} catch (e) {
@@ -48,7 +49,6 @@ export const getPosts = () => {
 			posts.forEach((post) => {
 				array.push(post.data())
 			})
-			console.log(array)
 			dispatch({ type: 'GET_POSTS', payload: array })
 		} catch (e) {
 			alert(e)

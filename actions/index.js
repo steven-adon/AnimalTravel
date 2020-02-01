@@ -9,12 +9,12 @@ const PUSH_ENDPOINT = 'https://exp.host/--/api/v2/push/send'
 export const uploadPhoto = (image) => {
 	return async (dispatch) => {
 		try {
-			const resize = await ImageManipulator.manipulateAsync(image.uri, [], { compress: 0.1, format: ImageManipulator.SaveFormat.PNG })
+			// const resize = await ImageManipulator.manipulateAsync(image.uri, [], { compress: 0.1, format: ImageManipulator.SaveFormat.PNG })
 			const blob = await new Promise((resolve, reject) => {
 				const xhr = new XMLHttpRequest()
 				xhr.onload = () => resolve(xhr.response)
 				xhr.responseType = 'blob'
-				xhr.open('GET', resize.uri, true)
+				xhr.open('GET', image.uri, true)
 				xhr.send(null)
 			});
 			const uploadTask = await firebase.storage().ref().child(uuid.v4()).put(blob)
