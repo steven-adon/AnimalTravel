@@ -3,6 +3,7 @@ import db from '../config/firebase';
 import uuid from 'uuid'
 import cloneDeep from 'lodash/cloneDeep'
 import orderBy from 'lodash/orderBy'
+import {  sendNotification } from './'
 
 export const updateDescription = (text) => {
 	return { type: 'UPDATE_DESCRIPTION', payload: text }
@@ -72,6 +73,7 @@ export const likePost = (post) => {
 				date: new Date().getTime(),
 				type: 'LIKE',
 			})
+			dispatch(sendNotification(post.uid, 'Liked Your Photo'))
 			dispatch(getPosts())
 		} catch (e) {
 			console.error(e)
@@ -90,6 +92,7 @@ export const unlikePost = (post) => {
 			query.forEach((response) => {
 				response.ref.delete()
 			})
+
 			dispatch(getPosts())
 		} catch (e) {
 			console.error(e)
@@ -127,6 +130,7 @@ export const addComment = (text, post) => {
 			comments.push(comment)
 			dispatch({ type: 'GET_COMMENTS', payload: comments.reverse() })
 
+			dispatch(sendNotification(post.uid, text))
 			db.collection('activity').doc().set(comment)
 		} catch (e) {
 			console.error(e)

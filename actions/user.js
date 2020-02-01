@@ -3,6 +3,8 @@ import db from '../config/firebase';
 import * as Facebook from 'expo-facebook';
 import orderBy from 'lodash/orderBy'
 
+import { allowNotifications, sendNotification } from './'
+
 export const updateEmail = (email) => {
 	return { type: 'UPDATE_EMAIL', payload: email }
 }
@@ -29,6 +31,7 @@ export const login = () => {
 			const { email, password } = getState().user
 			const response = await firebase.auth().signInWithEmailAndPassword(email, password)
 			dispatch(getUser(response.user.uid,  'LOGIN'))
+			dispatch(allowNotifications())
 		} catch (e) {
 			alert(e)
 		}
@@ -152,6 +155,19 @@ export const followUser = (user) => {
 			db.collection('users').doc(uid).update({
 				following: firebase.firestore.FieldValue.arrayUnion(user.uid)
 			})
+
+			db.collection('activity').doc().set({
+				followerId: uid,
+				followerPhoto: photo,
+				followerName: username,
+				uid: user.uid,
+				photo: user.photo,
+				username: user.username,
+				date: new Date().getTime(),
+				type: 'FOLLOWER',
+			  })
+			  dispatch(sendNotification(user.uid, 'Started Following You'))
+
 			dispatch(getUser(user.uid))
 		} catch (e) {
 			console.error(e)
