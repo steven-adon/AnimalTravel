@@ -29,7 +29,7 @@ class Profile extends React.Component {
               <Text style={styles.bold}>Logout</Text>
             </TouchableOpacity>
           </View> :
-          <TouchableOpacity style={styles.buttonSmall} onPress={() => this.props.navigation.navigate('Chat')}>
+          <TouchableOpacity style={styles.buttonSmall} onPress={() => this.props.navigation.navigate('Chat', user.uid)}>
             <Text style={styles.bold}>Message</Text>
           </TouchableOpacity>
         }

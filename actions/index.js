@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 import firebase from 'firebase'
+import db from '../config/firebase'
 
 export const uploadPhoto = (image) => {
 	return async (dispatch) => {

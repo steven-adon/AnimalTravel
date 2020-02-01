@@ -10,6 +10,8 @@ import CameraScreen from '../screens/Camera'
 import MapScreen from '../screens/Map'
 import EditScreen from '../screens/Signup'
 import CommentScreen from '../screens/Comment'
+import ChatScreen from '../screens/Chat'
+import MessagesScreen from '../screens/Messages'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack'
 import { TouchableOpacity, Image } from 'react-native'
@@ -26,7 +28,7 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                     </TouchableOpacity>
                 ),
                 headerRight: (
-                    <TouchableOpacity onPress={() => console.log('Message')} >
+                    <TouchableOpacity onPress={() => navigation.navigate('Messages')} >
                         <Ionicons style={{ marginRight: 10 }} name={'ios-send'} size={30} />
                     </TouchableOpacity>
                 ),
@@ -47,6 +49,28 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
             screen: MapScreen,
             navigationOptions: ({ navigation }) => ({
                 title: 'Map View',
+                headerLeft: (
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                    </TouchableOpacity>
+                )
+            })
+        },
+        Messages: {
+            screen: MessagesScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Messages',
+                headerLeft: (
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                    </TouchableOpacity>
+                )
+            })
+        },
+        Chat: {
+            screen: ChatScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Chat',
                 headerLeft: (
                     <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
