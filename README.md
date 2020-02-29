@@ -52,6 +52,10 @@ expo start --ios
 <img src='./screenshots/ios3.png' width=280>
 </div>
 
-## Android截图
+## Android截图 (Sumang A70s)
+<div>
 <img src='./screenshots/ios1.png' width=280>
+<img src='./screenshots/ios2.png' width=280>
+<img src='./screenshots/ios3.png' width=280>
+</div>
 
