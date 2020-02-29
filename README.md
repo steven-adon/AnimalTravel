@@ -53,5 +53,5 @@ expo start --ios
 </div>
 
 ## Android截图
-<img src='./screenshots/ios1.png'>
+<img src='./screenshots/ios1.png' width=280>
 
