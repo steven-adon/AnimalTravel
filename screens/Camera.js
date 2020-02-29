@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles'
 import { Ionicons } from '@expo/vector-icons'
-import { SafeAreaView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, TouchableOpacity,  View } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 import { connect } from 'react-redux'
@@ -29,14 +29,16 @@ class CameraUpload extends React.Component {
 
     render() {
         return (
-            <Camera style={{ flex: 1 }} ref={ref => { this.camera = ref }} type={Camera.Constants.Type.back}>
-                <SafeAreaView style={{ flex: 1 }}>
-                    <TouchableOpacity style={{ paddingLeft: 30 }} onPress={() => this.props.navigation.goBack()} >
-                        <Ionicons color={'white'} name={'ios-arrow-back'} size={50} />
-                    </TouchableOpacity>
-                </SafeAreaView>
-                <TouchableOpacity style={styles.cameraButton} onPress={() => this.snapPhoto()} />
-            </Camera>
+            <View style={{ flex: 1 }}>
+                <Camera style={{ flex: 1 }} ref={ref => { this.camera = ref }} type={Camera.Constants.Type.back}>
+                    <SafeAreaView style={{ flex: 1 }}>
+                        <TouchableOpacity style={{ paddingLeft: 30 }} onPress={() => this.props.navigation.goBack()} >
+                            <Ionicons color={'white'} name={'ios-arrow-back'} size={50} />
+                        </TouchableOpacity>
+                    </SafeAreaView>
+                    <TouchableOpacity style={styles.cameraButton} onPress={() => this.snapPhoto()} />
+                </Camera>
+            </View>
         );
     }
 }

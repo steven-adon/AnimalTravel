@@ -80,9 +80,21 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
         },
         Camera: {
             screen: CameraScreen,
+            // navigationOptions: {
+            //     header: null
+            // },
             navigationOptions: {
-                header: null
+                title: 'Take Picture',
+                headerLeft: null
             }
+            // navigationOptions: ({ navigation }) => ({
+            //     title: 'Take Picture',
+            //     // headerLeft: (
+            //     //     <TouchableOpacity onPress={() => navigation.goBack()} >
+            //     //         <Ionicons style={[styles.icon, { marginLeft: 10 }]} name={'ios-arrow-back'} size={30} />
+            //     //     </TouchableOpacity>
+            //     // )
+            // })
         }
     }
 ));
