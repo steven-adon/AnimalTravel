@@ -26,6 +26,9 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "android": {
+      "package": "com.ultimatedev.instagram"
+    },
+    "description": "bulid an picture share places"
   }
 }

@@ -49,6 +49,22 @@ class Search extends React.Component {
                             </TouchableOpacity>
                         </View>
                     )} />
+
+                  <FlatList
+                    data={[1,2,3,4,5,6,7,8]}
+                    keyExtractor={(item) => item}
+                    renderItem={({ item }) => (
+                        <View style={[styles.row, styles.space, { height: 100, borderWidth: 2, borderColor: '#000'  }]}>
+                            <TouchableOpacity  style={[styles.container, styles.left]}>
+
+                               <Image style={{  width: 100,  }} source={{ uri:  require('../assets/circle.png') }} />
+
+                                <Text style={[styles.gray, { color: '#000' }]}>{[item]}</Text>
+
+                            </TouchableOpacity>
+                        </View>
+                    )} />
+
             </SafeAreaView>
         );
     }
