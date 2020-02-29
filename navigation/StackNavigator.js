@@ -40,7 +40,7 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                 title: 'Comments',
                 headerLeft: (
                     <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                        <Ionicons style={[styles.icon, { marginLeft: 10 }]} name={'ios-arrow-back'} size={30} />
                     </TouchableOpacity>
                 )
             })
@@ -62,7 +62,7 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                 title: 'Messages',
                 headerLeft: (
                     <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                        <Ionicons style={[styles.icon, { marginLeft: 10 }]} name={'ios-arrow-back'} size={30} />
                     </TouchableOpacity>
                 )
             })
@@ -73,7 +73,7 @@ export const HomeNavigator = createAppContainer(createStackNavigator(
                 title: 'Chat',
                 headerLeft: (
                     <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Ionicons style={styles.icon} name={'ios-arrow-back'} size={30} />
+                        <Ionicons style={[styles.icon, { marginLeft: 10 }]} name={'ios-arrow-back'} size={30} />
                     </TouchableOpacity>
                 )
             })
