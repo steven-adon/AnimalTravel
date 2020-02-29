@@ -1,5 +1,5 @@
 # AninalTravel
-* 使用ReactNative开发的宠物旅游项目，**支持Android和iOS**，欢迎大家给个star或fork，谢谢~~
+* 使用ReactNative开发的宠物旅游项目，**支持Android和iOS**~~
 
 # Android扫码下载体验
 <img src='./screenshots/qr-code.png'>
