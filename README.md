@@ -47,11 +47,11 @@ expo start --ios
 
 ## iOS截图（iPhone11）
 <div>
-<img src='./screenshots/ios01.png' width=280>
-<img src='./screenshots/ios02.png' width=280>
-<img src='./screenshots/ios03.png' width=280>
+<img src='./screenshots/ios1.png' width=280>
+<img src='./screenshots/ios2.png' width=280>
+<img src='./screenshots/ios3.png' width=280>
 </div>
 
 ## Android截图
-<img src='./screenshots/ios01.png'>
+<img src='./screenshots/ios1.png'>
 
