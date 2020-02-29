@@ -135,6 +135,8 @@ export const signup = () => {
 					bio: bio,
 					photo: '',
 					token: null,
+					followers: [],
+					following: []
 				}
 				db.collection('users').doc(response.user.uid).set(user)
 				dispatch({ type: 'LOGIN', payload: user })
